@@ -2,6 +2,7 @@ import random
 import pygame
 from PIL import Image
 import os
+Image.MAX_IMAGE_PIXELS = None  # 防止加载图片过大时超出处理范围
 
 font_size = 20  # 字体大小
 text = '0'  # 字体内容
@@ -25,7 +26,9 @@ for y in range(height):
     image_col_list = []
     for x in range(width):
         # 是字体的像素就变成1，白色变成0，后续会在1贴图
-        if font_text.get_at((x, y))[0] == 1:
+        # ATTENTION: 这里只能用不等于黑色，如果是等于0的话，他不一定全白，反正必须这样就是了
+        # 只有这样整个文字才会饱满
+        if font_text.get_at((x, y))[0] != 255:
             image_col_list.append(1)
         else:
             image_col_list.append(0)
