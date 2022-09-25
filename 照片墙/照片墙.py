@@ -16,7 +16,7 @@ pygame.init()
 # 这里是利用pygame来创造字体
 font = pygame.font.Font('simkai.ttf', font_size)  # 这是字体文件，啥都行
 # RGB值，白色背景，黑色字体
-font_text = font.render(text, True, (0, 0, 0), (255, 255, 255))  # 字的内容为text， 有锯齿， 字体黑，背景白
+font_text = font.render(text, True, (0, 0, 0), (255, 255, 255))  # 字的内容为text， 有锯齿， 字体黑，背景白（其实字体边缘不是纯黑，但背景是纯白）
 height = font_text.get_height()
 width = font_text.get_width()
 
